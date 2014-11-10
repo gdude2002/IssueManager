@@ -1,0 +1,40 @@
+networking:
+  port: 8080  # Port the webhook listener should run on
+github:  # GitHub login details. No 2-factor, please.
+  username: ""
+  password: ""
+repos:
+  "GlowstoneMC/Glowstone":  # Name of the repository
+    label_regex: 'I: '  # Anything with a label that matches this is tracked
+
+    triggers:  # A list of triggers to run
+      trigger_name:  # Name of the trigger
+        checks:  # Checks to run (Optional)
+          match_users:  # Usernames to match against (Optional)
+          - 'username' # Some regex to match a username
+          first_comment: yes  # Whether to only match the first issue comment
+          regex: 'some regex'  # Regex to match
+          types:  # Parts of the issue to match against
+          - "comment"
+          - "title"
+        actions:  # Actions to take - all are optional but not adding any would be a waste, right?
+          add_labels:  # Labels to add
+          - "I: Some label"
+          del_labels:  # Labels to remove
+          - "I: Another label"
+          relabel:  # Labels to set, relpacing any that match the regex above
+          - "I: Single label"
+          close: yes  # Whether to close the ticket
+          reply: "Some message"  # A response to make
+          reference: 123  # A ticket to reference
+          duplicate: 123  # Shorthand for closing a ticket as a duplicate of another ticket
+          log: "Message"  # A message to put in the log
+    initial:  # Actions to do when the ticket doesn't have a label matching the regex
+              # This should add a label that does match the regex
+      tickets:  # Which tickets to run this against
+      - 123
+      - 456
+
+      actions:  # As above
+        add_labels:
+        - "I: Some label"
