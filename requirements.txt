@@ -1,4 +1,5 @@
 cyclone
+pygithub
 pyyaml
 requests
 twisted

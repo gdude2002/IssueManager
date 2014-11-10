@@ -24,14 +24,15 @@ repos:
           - "I: Another label"
           relabel:  # Labels to set, relpacing any that match the regex above
           - "I: Single label"
-          close: yes  # Whether to close the ticket
+          close: yes  # Whether to close the issue
           reply: "Some message"  # A response to make
-          reference: 123  # A ticket to reference
-          duplicate: 123  # Shorthand for closing a ticket as a duplicate of another ticket
+          reference: 123  # A issue to reference
+          duplicate: 123  # Shorthand for closing a issue as a duplicate of another issue
           log: "Message"  # A message to put in the log
-    initial:  # Actions to do when the ticket doesn't have a label matching the regex
+    initial:  # Actions to do when the issue doesn't have a label matching the regex
               # This should add a label that does match the regex
-      tickets:  # Which tickets to run this against
+              # Note, this will be run on new issues as well
+      issues:  # Which issues to run this against (aside rrom new issues)
       - 123
       - 456
 

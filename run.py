@@ -6,3 +6,13 @@ enough for you to use with your own projects as well.
 """
 
 __author__ = 'Gareth Coles'
+
+from system.manager import Manager
+from util import log
+
+log.set_level()
+
+m = Manager()
+
+if m.ready:
+    m.run()
